@@ -11,6 +11,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.mappas.databinding.ActivityMapsBinding;
+import com.google.android.gms.maps.model.PolygonOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -45,7 +46,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(19.4757307, -99.0446951);
+        LatLng home = new LatLng(16.84942, -99.90891);
+
         mMap.addMarker(new MarkerOptions().position(sydney).title("Fes Aragon"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+        mMap.addPolygon(new PolygonOptions()
+                .clickable(true)
+                .add(
+                        new LatLng(19.4757307, -99.0446951),
+                        new LatLng(16.84942, -99.90891),
+                        new LatLng(21.1742900, -86.8465600),
+                        new LatLng(25.67507, -100.31847)));
     }
 }
